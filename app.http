@@ -1,0 +1,31 @@
+POST http://localhost:5000/register/
+content-type:application/json
+
+{
+  "username": "skb nawaz",
+  "name": "skb nawaz",
+  "password": "skbnawaz007",
+  "gender": "male",
+  "location": "Anantapur"
+}
+
+###
+
+POST http://localhost:5000/login/
+Content-type: application/json
+
+
+{
+  "username": "skbnawaz",
+  "password": "skbnawaz123"
+}
+
+###
+PUT http://localhost:5000/change-password
+content-type:application/json
+
+{
+  "username": "",
+  "oldPassword": "",
+  "newPassword": ""
+}
