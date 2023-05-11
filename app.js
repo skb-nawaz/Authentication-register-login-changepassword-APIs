@@ -26,7 +26,7 @@ initialiseDBandDatabase();
 
 //API-1 registration
 app.get("/", (req, res) => {
-  res.json(("message": "hai"));
+  res.json({ message: "hai" });
 });
 app.post("/register/", async (request, response) => {
   const userData = request.body;
