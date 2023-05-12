@@ -7,9 +7,10 @@ const jwt = require("jsonwebtoken");
 const path = require("path");
 const bcrypt = require("bcrypt");
 const cors = require("cors") ;
+const bodyParser = require('body-parser')
 
 app.use(cors());
-
+app.use(bodyParser.json())
 const dbpath = path.join(__dirname, "userData.db");
 
 let db = null;
