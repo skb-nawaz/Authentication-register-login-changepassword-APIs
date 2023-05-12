@@ -10,7 +10,10 @@ const cors = require("cors") ;
 const bodyParser = require('body-parser')
 
 app.use(cors());
-app.use(bodyParser.json())
+app.use(bodyParser());
+
+app.use(express.json());
+
 const dbpath = path.join(__dirname, "userData.db");
 
 let db = null;
