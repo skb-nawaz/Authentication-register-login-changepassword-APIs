@@ -72,12 +72,14 @@ app.post("/register/", async (request, response) => {
 app.post("/login", async (request, response) => {
   const loginDetails = request.body;
   const { username, password } = loginDetails;
-  const checkLoginUserInDB = `select * from user where username='${username}';`;
+  const checkLoginUserInDB = `SELECT * FROM user WHERE username='${username}';`;
   const dbLoginresponse = await db.get(checkLoginUserInDB);
-  if (dbLoginresponse !== undefined) {
+  
+  if (dbLoginresponse) {
     const hashedPassword = dbLoginresponse.password;
     const comparePassword = await bcrypt.compare(password, hashedPassword);
-    if (comparePassword === true) {
+    
+    if (comparePassword) {
       const payload = {
         username: dbLoginresponse.username,
       };
@@ -85,11 +87,11 @@ app.post("/login", async (request, response) => {
       response.send({ jwtToken });
     } else {
       response.status(400);
-      response.send("Invalid password");
+      response.send({ error_msg: "Invalid password" });
     }
   } else {
     response.status(400);
-    response.send("Invalid user");
+    response.send({ error_msg: "Invalid user" });
   }
 });
 
